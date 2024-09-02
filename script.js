@@ -4,14 +4,20 @@ function addCourse() {
     newRow.classList.add('course');
 
     newRow.innerHTML = `
-        <td><input type="text" class="courseName" name="courseName" required></td>
+        <td><input type="text" class="courseName" name="courseName"></td>
         <td><input type="number" class="credits" name="credits" step="0.5" min="0" required></td>
         <td><input type="number" class="attendance" name="attendance" step="0.01" min="0" max="10" required></td>
         <td><input type="number" class="midterm" name="midterm" step="0.01" min="0" max="10" required></td>
         <td><input type="number" class="final" name="final" step="0.01" min="0" max="10" required></td>
+        <td><button type="button" onclick="removeCourse(this)">Xóa</button></td>
     `;
 
     courseContainer.appendChild(newRow);
+}
+
+function removeCourse(button) {
+    const row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
 }
 
 function validateInput(input) {
@@ -41,7 +47,7 @@ function calculateGPA() {
             return; // Dừng tính toán nếu có lỗi nhập điểm
         }
 
-        const courseName = course.querySelector('.courseName').value;
+        const courseName = course.querySelector('.courseName').value || "Chưa đặt tên";
         const credits = parseFloat(course.querySelector('.credits').value);
 
         const score10 = (parseFloat(attendance.value) * 0.2) + (parseFloat(midterm.value) * 0.2) + (parseFloat(final.value) * 0.6);
@@ -87,7 +93,6 @@ function calculateGPA() {
             <td>${score10.toFixed(2)}</td>
             <td>${score4.toFixed(2)}</td>
             <td>${gradeLetter}</td>
-            <td>${credits}</td>
         `;
         resultTable.appendChild(row);
     }

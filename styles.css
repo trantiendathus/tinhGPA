@@ -22,6 +22,7 @@ body {
 
 h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 form {
@@ -51,7 +52,7 @@ td {
 }
 
 input[type="number"] {
-    width: 70px; /* Điều chỉnh độ rộng của ô nhập liệu cho điểm */
+    width: 100px; /* Điều chỉnh độ rộng của ô nhập liệu cho điểm */
     padding: 5px;
     border-radius: 4px;
     border: none;
@@ -59,7 +60,7 @@ input[type="number"] {
 }
 
 input[type="text"] {
-    width: 150px; /* Điều chỉnh độ rộng của ô nhập liệu cho Tên Môn Học */
+    width: 200px; /* Điều chỉnh độ rộng của ô nhập liệu cho Tên Môn Học */
     padding: 5px;
     border-radius: 4px;
     border: none;
@@ -80,6 +81,7 @@ button {
 button:hover {
     background-color: #d12039;
 }
+
 #copyright {
     text-align: center;
     margin-top: 20px;
@@ -90,21 +92,6 @@ button:hover {
 #copyright p {
     margin: 0;
 }
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #ec2f4b;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-}
-
-button:hover {
-    background-color: #d12039;
-}
 
 td button {
     background-color: #d12039;
@@ -114,4 +101,36 @@ td button {
 
 td button:hover {
     background-color: #b81b33;
+}
+
+/* Style cho box chat */
+#chatBox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#chatBox.hidden {
+    display: none;
+}
+
+#chatBox button {
+    background-color: #ec2f4b;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#chatBox button:hover {
+    background-color: #d12039;
 }

@@ -4,11 +4,11 @@ function addCourse() {
     newRow.classList.add('course');
 
     newRow.innerHTML = `
-        <td><input type="text" class="courseName" name="courseName"></td>
-        <td><input type="number" class="credits" name="credits" step="0.5" min="0" required></td>
-        <td><input type="number" class="attendance" name="attendance" step="0.01" min="0" max="10" required></td>
-        <td><input type="number" class="midterm" name="midterm" step="0.01" min="0" max="10" required></td>
-        <td><input type="number" class="final" name="final" step="0.01" min="0" max="10" required></td>
+        <td><input type="text" class="courseName" name="courseName" placeholder="Tên Môn Học" required></td>
+        <td><input type="number" class="credits" name="credits" step="0.5" min="0" required placeholder="Số Tín Chỉ"></td>
+        <td><input type="number" class="attendance" name="attendance" step="0.01" min="0" max="10" required placeholder="Điểm Chuyên Cần"></td>
+        <td><input type="number" class="midterm" name="midterm" step="0.01" min="0" max="10" required placeholder="Điểm Giữa Kì"></td>
+        <td><input type="number" class="final" name="final" step="0.01" min="0" max="10" required placeholder="Điểm Cuối Kì"></td>
         <td><button type="button" onclick="removeCourse(this)">Xóa</button></td>
     `;
 
@@ -101,5 +101,35 @@ function calculateGPA() {
     const averageScore4 = totalScore4 / totalCredits;
 
     document.getElementById('totalScore10').textContent = averageScore10.toFixed(2);
-    document.getElementById('totalScore4').textContent = averageScore4.toFixed(2);
+    document.getElementById('totalScore4').textContent = averageScore4.toFixed(3);
+
+    displayChatBox(averageScore4);
+}
+
+function displayChatBox(gpa) {
+    const chatBox = document.getElementById('chatBox');
+    const chatMessage = document.getElementById('chatMessage');
+    let message = '';
+
+    if (gpa < 2.5) {
+        message = `Số điểm cần để đạt Khá là ${(2.5 - gpa).toFixed(2)}. Hãy cố gắng hơn!`;
+    } else if (gpa < 3.2) {
+        message = `Số điểm cần để đạt Giỏi là ${(3.2 - gpa).toFixed(2)}. Bạn đang tiến bộ rất tốt!`;
+    } else if (gpa < 3.6) {
+        message = `Số điểm cần để đạt Xuất Sắc là ${(3.6 - gpa).toFixed(2)}. Bạn đã gần đạt mức cao nhất!`;
+    } else {
+        const messages = [
+            "Chúc mừng bạn! Bạn đã đạt mức Xuất Sắc!",
+            "Thành tích tuyệt vời! Tiếp tục duy trì!",
+            "Xuất sắc! Bạn đang trên đỉnh cao của học tập!"
+        ];
+        message = messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    chatMessage.textContent = message;
+    chatBox.classList.remove('hidden');
+}
+
+function closeChatBox() {
+    document.getElementById('chatBox').classList.add('hidden');
 }

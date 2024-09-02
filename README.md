@@ -1,2 +1,0 @@
-# tinhGPA
-tính GPA

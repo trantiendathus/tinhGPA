@@ -55,12 +55,32 @@
             <p id="chatMessage"></p>
             <button onclick="closeChatBox()">Đóng</button>
         </div>
+
+        <!-- Nút điều khiển nhạc -->
+        <button id="musicControlBtn" onclick="toggleMusic()">Dừng Nhạc</button>
     </div>
+
     <!-- Thẻ audio để tự động phát nhạc -->
-    <audio autoplay loop>
+    <audio id="backgroundMusic" autoplay loop>
         <source src="https://files.catbox.moe/dftfik.mp3" type="audio/mpeg">
         Trình duyệt của bạn không hỗ trợ thẻ audio.
     </audio>
+
     <script src="script.js"></script>
+    <script>
+        // Hàm để dừng/phát nhạc
+        function toggleMusic() {
+            var music = document.getElementById('backgroundMusic');
+            var controlBtn = document.getElementById('musicControlBtn');
+
+            if (music.paused) {
+                music.play();
+                controlBtn.textContent = 'Dừng Nhạc';
+            } else {
+                music.pause();
+                controlBtn.textContent = 'Phát Nhạc';
+            }
+        }
+    </script>
 </body>
 </html>

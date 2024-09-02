@@ -90,3 +90,28 @@ button:hover {
 #copyright p {
     margin: 0;
 }
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ec2f4b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #d12039;
+}
+
+td button {
+    background-color: #d12039;
+    padding: 5px;
+    font-size: 12px;
+}
+
+td button:hover {
+    background-color: #b81b33;
+}
